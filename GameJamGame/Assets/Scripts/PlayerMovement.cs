@@ -26,24 +26,24 @@ public class PlayerMovement : MonoBehaviour
         {
 
             //transform.position += new Vector3 (0.1f, 0.0f, 0.0f);
-            transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 2.0f);
+            transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f);
 
         }
         else if (Input.GetAxis(controls[0]) < 0)
         {
 
             //transform.position -= new Vector3 (0.1f, 0.0f, 0.0f);
-            transform.localEulerAngles += new Vector3(0.0f, 0.0f, 2.0f);
+            transform.localEulerAngles += new Vector3(0.0f, 0.0f, 4.0f);
 
         }
 
 
         float angle = (transform.eulerAngles.z + 90)* Mathf.Deg2Rad;
-        if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 10)
+        if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20)
         {
 
             //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
-            rb2D.AddForce (transform.up * 5);
+            rb2D.AddForce (transform.up * 10);
 
         }
 

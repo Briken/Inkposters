@@ -24,62 +24,18 @@ public class TentacleMovement : MonoBehaviour
 	void Update ()
     {
 
-        //if (Input.GetAxis(controls[0]) > 0)
-        //{
-
-        //    transform.position += new Vector3 (0.1f, 0.0f, 0.0f);
-
-        //}
-        //else if (Input.GetAxis(controls[0]) < 0)
-        //{
-
-        //    transform.position -= new Vector3 (0.1f, 0.0f, 0.0f);
-
-        //}
-
-        //if (Input.GetAxis(controls[1]) > 0)
-        //{
-
-        //    transform.position += new Vector3(0.0f, 0.1f, 0.0f);
-
-        //}
-        //else if (Input.GetAxis(controls[1]) < 0)
-        //{
-
-        //    transform.position -= new Vector3(0.0f, 0.1f, 0.0f);
-
-        //}
-
     }
     void FixedUpdate()
     {
 
-        float dist = Vector2.Distance(transform.position, playerBody.position);
-
         float xValue = Input.GetAxis(controls[0]);
         float yValue = Input.GetAxis(controls[1]);
-        if (rb2D.velocity.magnitude < 10 && dist < 1.8f)
+
+        if (rb2D.velocity.magnitude < 20)
         {
-            rb2D.AddForce(new Vector2(xValue, yValue) * 5, ForceMode2D.Force);
+            rb2D.AddForce(new Vector2(xValue, yValue) * 17, ForceMode2D.Force);
         }
 
-        if (dist > 1.4f)
-        {
-
-            rb2D.drag = 100.0f;
-
-        }
-        else
-        {
-            rb2D.drag = 1.0f;
-
-        }
-
-    }
-
-    public void MoveTowards ()
-    {
-        
     }
 
 }
