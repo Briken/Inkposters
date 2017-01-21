@@ -8,12 +8,16 @@ public class PlayerHead : MonoBehaviour
     public GameObject tentacle;
     Vector2 initPos;
     public float resetWait = 2;
+    GameObject gameController;
+    GameInfo infoScript;
+    
 
 	// Use this for initialization
 	void Start ()
     {
-        initPos = this.gameObject.transform.position;
-	}
+        gameController = GameObject.Find("GameController");
+        infoScript = gameController.GetComponent<GameInfo>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -28,7 +32,15 @@ public class PlayerHead : MonoBehaviour
         {
 
             Lose ();
-            ResetTime(resetWait);
+            if (this.name == "Player1")
+            {
+                infoScript.player1Wins();
+            }
+            if (this.name == "Player2")
+            {
+                infoScript.player2Wins();
+            }
+            infoScript.ResetLevels();
         }
 
     }
@@ -41,11 +53,5 @@ public class PlayerHead : MonoBehaviour
 
         mask.GetComponent<MaskSpin>().CreateMask ();
 
-    }
-
-    IEnumerator ResetTime(float reset)
-    {
-        yield return new WaitForSeconds(reset);
-        this.transform.position = initPos;
     }
 }
