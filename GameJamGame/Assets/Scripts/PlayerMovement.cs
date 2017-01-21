@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 10)
         {
 
-            print ("hello");
-
             //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
             rb2D.AddForce (transform.up * 5);
 
