@@ -34,8 +34,7 @@ public class MaskSpin : MonoBehaviour
     {
 
         rb2D = GetComponent<Rigidbody2D>();
-        print ("hello");
-        rb2D.AddForce (transform.up * 10.0f, ForceMode2D.Impulse);
+        rb2D.AddForce (transform.up * 6.0f, ForceMode2D.Impulse);
 
     }
 

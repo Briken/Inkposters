@@ -11,6 +11,8 @@ public class BombScript : MonoBehaviour {
     Vector2 targetPos;
     Vector2 position;
 
+    public GameObject explosion;
+
 	// Use this for initialization
 	void Start () {
         position = this.transform.position;
@@ -24,23 +26,21 @@ public class BombScript : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D squid)
     {
 
-        Debug.Log("Collision happened");
-        if (squid.collider.tag == "Player")
+        if (squid.collider.tag == "Player1" || squid.collider.tag == "Player2" || squid.collider.tag == "Hand1" || squid.collider.tag == "Hand2")
         {
-            Debug.Log("player collision");
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, explosionRad);
-            int i = 0;
-            Debug.Log("hit colliders" + hitColliders.Length.ToString());
             foreach (Collider2D coll2D in hitColliders)
             {
                 targetPos = coll2D.transform.position;
                 rb2D = coll2D.gameObject.GetComponent<Rigidbody2D>();
-                if (rb2D != null)
+                if (rb2D != null && coll2D.tag == "Player1" || coll2D.tag == "Player2")
                 {   
                     rb2D.AddForce((targetPos - position) * bombForce);
                 }
             }
             Destroy(this.gameObject);
+
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
 }

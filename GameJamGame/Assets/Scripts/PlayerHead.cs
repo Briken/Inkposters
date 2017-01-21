@@ -10,7 +10,8 @@ public class PlayerHead : MonoBehaviour
     public float resetWait = 2;
     GameObject gameController;
     GameInfo infoScript;
-    
+
+    float countdown = 5.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -22,7 +23,15 @@ public class PlayerHead : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	
+	    if (countdown < 5.0f)
+        {
+            countdown += Time.deltaTime;
+        }
+        else if (countdown > 5.0f)
+        {
+            infoScript.ResetLevels();
+        }
+
 	}
 
     void OnTriggerEnter2D (Collider2D other)
@@ -32,15 +41,19 @@ public class PlayerHead : MonoBehaviour
         {
 
             Lose ();
+
             if (this.name == "Player1")
             {
                 infoScript.player1Wins();
             }
+
             if (this.name == "Player2")
             {
                 infoScript.player2Wins();
             }
-            infoScript.ResetLevels();
+
+            countdown = 0.0f;
+
         }
 
     }
@@ -51,7 +64,8 @@ public class PlayerHead : MonoBehaviour
         Destroy (GetComponent<PlayerMovement> ());
         Destroy (tentacle.GetComponent<TentacleMovement> ());
 
-        mask.GetComponent<MaskSpin>().CreateMask ();
+        if (mask != null)
+            mask.GetComponent<MaskSpin>().CreateMask ();
 
     }
 }
