@@ -15,15 +15,41 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb2D;
 
+    bool outOfWater;
+
 	// Use this for initialization
 	void Start ()
     {
-        rb2D = GetComponent<Rigidbody2D>();    
-	}
+
+        rb2D = GetComponent<Rigidbody2D>();
+        stunned = true;
+        StartCoroutine(Stun());
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (transform.position.y > 2.3f)
+            outOfWater = true;
+        else
+            outOfWater = false;
+
+        if (outOfWater)
+        {
+
+            rb2D.gravityScale = 0.5f;
+            rb2D.drag = -0.5f;
+
+        }
+        else
+        {
+
+            rb2D.gravityScale = 0.0f;
+            rb2D.drag = 1;
+
+        }
+
         if (!stunned)
         {
             if (Input.GetAxis(controls[0]) > 0)
@@ -43,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             float angle = (transform.eulerAngles.z + 90) * Mathf.Deg2Rad;
-            if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20)
+            if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20 && !outOfWater)
             {
 
                 //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);

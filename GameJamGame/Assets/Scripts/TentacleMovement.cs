@@ -15,6 +15,8 @@ public class TentacleMovement : MonoBehaviour
 
     public Transform playerBody;
 
+    bool outOfWater;
+
     // Use this for initialization
     void Start ()
     {
@@ -24,11 +26,30 @@ public class TentacleMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (transform.position.y > 2.3f)
+            outOfWater = true;
+        else
+            outOfWater = false;
 
+        if (outOfWater)
+        {
+
+            rb2D.gravityScale = 0.5f;
+            rb2D.drag = -0.5f;
+
+        }
+        else
+        {
+
+            rb2D.gravityScale = 0.0f;
+            rb2D.drag = 1;
+
+        }
     }
+
     void FixedUpdate()
     {
-        if (!stunned)
+        if (!stunned && !outOfWater)
         {
             float xValue = Input.GetAxis(controls[0]);
             float yValue = Input.GetAxis(controls[1]);
@@ -49,18 +70,26 @@ public class TentacleMovement : MonoBehaviour
             }
             else
             {
+
                 rb2D.drag = 1;
+
             }
+
         }
         if (stunned)
         {
+
             StartCoroutine(Stun());
+
         }
+
     }
     IEnumerator Stun()
     {
+
         yield return new WaitForSeconds(stunDur);
         stunned = false;
+
     }
 
 }
