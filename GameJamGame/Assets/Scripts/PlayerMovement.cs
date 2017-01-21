@@ -4,6 +4,9 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public bool stunned = false;
+    public float stunDur = 3;
+
     public string[] controls = new string[2];
     /*
      * 0 = PlayerHorizontal
@@ -11,8 +14,6 @@ public class PlayerMovement : MonoBehaviour
      */
 
     Rigidbody2D rb2D;
-
-    bool outOfWater = false;
 
 	// Use this for initialization
 	void Start ()
@@ -23,45 +24,41 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
-        if (transform.position.y > 3.4)
-            outOfWater = true;
-        else
-            outOfWater = false;
-
-        if (outOfWater)
+        if (!stunned)
         {
-            rb2D.gravityScale = 0.5f;
-            rb2D.drag = -0.5f;
+            if (Input.GetAxis(controls[0]) > 0)
+            {
+
+                //transform.position += new Vector3 (0.1f, 0.0f, 0.0f);
+                transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f);
+
+            }
+            else if (Input.GetAxis(controls[0]) < 0)
+            {
+
+                //transform.position -= new Vector3 (0.1f, 0.0f, 0.0f);
+                transform.localEulerAngles += new Vector3(0.0f, 0.0f, 4.0f);
+
+            }
+
+
+            float angle = (transform.eulerAngles.z + 90) * Mathf.Deg2Rad;
+            if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20)
+            {
+
+                //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
+                rb2D.AddForce(transform.up * 10);
+
+            }
         }
-        else
+        if (stunned)
         {
-            rb2D.gravityScale = 0;
-            rb2D.drag = 1;
+            StartCoroutine(Stun());
         }
-
-	    if (Input.GetAxis(controls[0]) > 0)
-        {
-
-            transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f);
-
-        }
-        else if (Input.GetAxis(controls[0]) < 0)
-        {
-
-            transform.localEulerAngles += new Vector3(0.0f, 0.0f, 4.0f);
-
-        }
-
-
-        float angle = (transform.eulerAngles.z + 90)* Mathf.Deg2Rad;
-        if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20 && !outOfWater)
-        {
-
-            rb2D.AddForce (transform.up * 10);
-
-        }
-
     }
-
+    IEnumerator Stun()
+    {
+        yield return new WaitForSeconds(stunDur);
+        stunned = false;
+    }
 }

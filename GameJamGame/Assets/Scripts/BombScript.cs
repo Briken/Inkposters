@@ -6,10 +6,14 @@ public class BombScript : MonoBehaviour {
 
     public float explosionRad = 10.0f;
     public float bombForce = 2.0f;
+    public float stunDur = 3.0f;
+
 
     Rigidbody2D rb2D;
     Vector2 targetPos;
     Vector2 position;
+
+    PlayerMovement moveScript;
 
     public GameObject explosion;
 
@@ -34,8 +38,11 @@ public class BombScript : MonoBehaviour {
                 targetPos = coll2D.transform.position;
                 rb2D = coll2D.gameObject.GetComponent<Rigidbody2D>();
                 if (rb2D != null && coll2D.tag == "Player1" || coll2D.tag == "Player2")
-                {   
+                {
+                    moveScript = coll2D.gameObject.GetComponent<PlayerMovement>();
                     rb2D.AddForce((targetPos - position) * bombForce);
+                    moveScript.stunned = true;
+                    
                 }
             }
             Destroy(this.gameObject);
@@ -43,4 +50,6 @@ public class BombScript : MonoBehaviour {
             Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }
+
+    
 }
