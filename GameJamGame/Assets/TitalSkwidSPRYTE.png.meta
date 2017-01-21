@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 guid: 68bf1ab644ede0a4fac4098c24fb26e2
-timeCreated: 1485020095
+timeCreated: 1485021865
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TitalSkwidSPRYTE_0
+    21300002: TitalSkwidSPRYTE_1
+    21300004: TitalSkwidSPRYTE_2
+    21300006: TitalSkwidSPRYTE_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -124,7 +128,59 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TitalSkwidSPRYTE_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 773
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TitalSkwidSPRYTE_1
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 0
+        width: 773
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TitalSkwidSPRYTE_2
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 0
+        width: 773
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TitalSkwidSPRYTE_3
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 0
+        width: 773
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
