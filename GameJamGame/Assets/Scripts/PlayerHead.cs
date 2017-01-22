@@ -14,14 +14,17 @@ public class PlayerHead : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        gameController = GameObject.Find("GameController");
-        infoScript = gameController.GetComponent<GameInfo>();
+        
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        if (gameController == null)
+        {
+            gameController = GameObject.Find("GameController");
+            infoScript = gameController.GetComponent<GameInfo>();
+        }
 	}
 
     void OnTriggerEnter2D (Collider2D other)
