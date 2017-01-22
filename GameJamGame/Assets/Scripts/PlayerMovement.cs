@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool stunned = false;
     public float stunDur = 3;
+    public float moveSpeed = 10;
 
     public string[] controls = new string[2];
     /*
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
-                rb2D.AddForce(transform.up * 10);
+                rb2D.AddForce(transform.up * moveSpeed);
 
             }
         }
