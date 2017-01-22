@@ -17,16 +17,19 @@ public class BombScript : MonoBehaviour {
 
     public GameObject explosion;
     public AudioClip explosionNoise;
+    AudioSource audioSource;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         position = this.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
 
     void OnCollisionEnter2D(Collision2D squid)
     {
@@ -43,14 +46,29 @@ public class BombScript : MonoBehaviour {
                     moveScript = coll2D.gameObject.GetComponent<PlayerMovement>();
                     rb2D.AddForce((targetPos - position) * bombForce);
                     moveScript.stunned = true;
-                    
-                }
-            }
-            Destroy(this.gameObject);
 
-            Instantiate(explosion, transform.position, Quaternion.identity);
+                }
+
+            }
+
+            StartCoroutine(PlayDestroy());
+
         }
+
     }
 
-    
+    private IEnumerator PlayDestroy ()
+    {
+        audioSource.PlayOneShot(explosionNoise);
+
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        yield return new WaitForSeconds(explosionNoise.length);
+        Destroy(this.gameObject);
+
+    }
+
+
 }
