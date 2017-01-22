@@ -95,8 +95,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BombScript.cs" />
     <Compile Include="Assets\Scripts\GameInfo.cs" />
+    <Compile Include="Assets\Scripts\JazzySun.cs" />
     <Compile Include="Assets\Scripts\MaskSpin.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
+    <Compile Include="Assets\Scripts\Pelicant.cs" />
+    <Compile Include="Assets\Scripts\PelicantSeek.cs" />
     <Compile Include="Assets\Scripts\PlayerHead.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\TentacleMovement.cs" />
