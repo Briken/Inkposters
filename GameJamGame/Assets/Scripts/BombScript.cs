@@ -16,6 +16,7 @@ public class BombScript : MonoBehaviour {
     PlayerMovement moveScript;
 
     public GameObject explosion;
+    public AudioClip explosionNoise;
 
 	// Use this for initialization
 	void Start () {
