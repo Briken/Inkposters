@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public float stunDur = 3;
     public float moveSpeed = 10;
 
+    public float speedDur = 5;
+    public float speedMultiplier = 2;
+
+    public bool isSped = false;
+
     public string[] controls = new string[2];
     /*
      * 0 = PlayerHorizontal
@@ -78,12 +83,25 @@ public class PlayerMovement : MonoBehaviour
 
 
             float angle = (transform.eulerAngles.z + 90) * Mathf.Deg2Rad;
-            if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20 && !outOfWater)
+            if (!isSped)
             {
+                if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20 && !outOfWater)
+                {
 
-                //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
-                rb2D.AddForce(transform.up * moveSpeed);
+                    //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
+                    rb2D.AddForce(transform.up * moveSpeed);
 
+                }
+            }
+            if (isSped)
+            {
+                if (Input.GetAxis(controls[1]) < 0 && rb2D.velocity.magnitude < 20 && !outOfWater)
+                {
+
+                    //transform.position += new Vector3(Mathf.Cos(angle) * 0.1f, Mathf.Sin(angle) * 0.1f, 0.0f);
+                    rb2D.AddForce(transform.up * (moveSpeed * speedMultiplier));
+                    StartCoroutine(SlowDown());
+                }
             }
         }
         if (stunned)
@@ -113,5 +131,9 @@ public class PlayerMovement : MonoBehaviour
        		audioSource.PlayOneShot (splat);
 
     }
-
+    IEnumerator SlowDown()
+    {
+        yield return new WaitForSeconds(speedDur);
+        isSped = false;
+    }
 }

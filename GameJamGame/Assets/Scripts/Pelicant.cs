@@ -32,12 +32,9 @@ public class Pelicant : MonoBehaviour {
 
     void Update()
     {
-        GoLeft();
 
-        if (fracJourney > 1)
-        {
-            Destroy(this.gameObject);
-        }
+        
+        this.transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, 0.01f);
         //if (transform.position == target.transform.position)
         //{
         //    goingLeft = false;
@@ -52,11 +49,11 @@ public class Pelicant : MonoBehaviour {
     }
 
 
-    void GoLeft()
-    {
-        float distCovered = (Time.time - startTime) * flightSpeed;
-        fracJourney = distCovered / journey1Length;
-        transform.position = Vector2.Lerp(startPoint, target.transform.position, fracJourney);
-    }
+    //void GoLeft()
+    //{
+    //    float distCovered = (Time.time - startTime) * flightSpeed;
+    //    fracJourney = distCovered / journey1Length;
+    //    transform.position = Vector2.Lerp(startPoint, target.transform.position, fracJourney);
+    //}
 
 }

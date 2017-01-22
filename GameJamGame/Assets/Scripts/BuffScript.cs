@@ -39,8 +39,7 @@ public class BuffScript : MonoBehaviour {
 			PlayerMovement moveScript = target.GetComponent<PlayerMovement> ();
 			if (buffID == 0) 
 			{
-				moveScript.moveSpeed *= speedMultiplier;
-				StartCoroutine (SpeedBuff (moveScript));
+                moveScript.isSped = true;
 			}
 
 			StartCoroutine (PlayAudio ());
