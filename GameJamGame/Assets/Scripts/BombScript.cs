@@ -46,7 +46,7 @@ public class BombScript : MonoBehaviour {
                     moveScript = coll2D.gameObject.GetComponent<PlayerMovement>();
                     rb2D.AddForce((targetPos - position) * bombForce);
                     moveScript.stunned = true;
-
+                    moveScript.StunTrigger();
                 }
 
             }

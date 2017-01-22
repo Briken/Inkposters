@@ -104,13 +104,18 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        if (stunned)
-        {
-            StartCoroutine(Stun());
-        }
+        //if (stunned)
+        //{
+        //    StartCoroutine(Stun());
+        //}
     }
-    IEnumerator Stun()
+    public void StunTrigger()
     {
+        StartCoroutine(Stun());
+    }
+    public IEnumerator Stun()
+    {
+        stunned = true;
         if (stunObject == null)
         {
             stunObject = Instantiate(stunnedIcon, transform.position, Quaternion.identity) as GameObject;
