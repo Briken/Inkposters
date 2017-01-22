@@ -21,13 +21,17 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject stunObject;
 
+    AudioSource audioSource;
+    public AudioClip splat;
+
 	// Use this for initialization
 	void Start ()
     {
 
-        rb2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D> ();
         stunned = true;
         StartCoroutine(Stun());
+        audioSource = GetComponent<AudioSource> ();
 
     }
 	
@@ -100,5 +104,14 @@ public class PlayerMovement : MonoBehaviour
         stunObject = null;
 
         print (stunObject);
+
     }
+
+    void OnCollisionEnter2D (Collision2D other)
+    {
+
+        audioSource.PlayOneShot (splat);
+
+    }
+
 }

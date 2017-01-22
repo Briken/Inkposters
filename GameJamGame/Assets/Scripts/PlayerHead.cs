@@ -21,8 +21,11 @@ public class PlayerHead : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
-	}
+        if (gameController == null)
+        {
+            gameController = GameObject.Find("GameController");
+        }
+    }
 
     void OnTriggerEnter2D (Collider2D other)
     {
