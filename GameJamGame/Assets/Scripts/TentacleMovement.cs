@@ -17,10 +17,14 @@ public class TentacleMovement : MonoBehaviour
 
     bool outOfWater;
 
+	public AudioClip fisting;
+	AudioSource audioSource;
+
     // Use this for initialization
     void Start ()
     {
         rb2D = GetComponent <Rigidbody2D> ();
+		audioSource = GetComponent <AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -91,5 +95,10 @@ public class TentacleMovement : MonoBehaviour
         stunned = false;
 
     }
+
+	void OnCollisionEnter2D (Collision2D other)
+	{
+		audioSource.PlayOneShot (fisting);
+	}
 
 }

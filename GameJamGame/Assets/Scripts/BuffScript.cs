@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +9,16 @@ public class BuffScript : MonoBehaviour {
     public float speedMultiplier = 2;
     GameObject target;
 
+	public AudioClip squawk;
+	AudioSource audioSource;
+
     // Use this for initialization
     void Start()
     {
-        buffID = (int)Random.Range(0,3);
+		
+       //buffID = (int)Random.Range(0,3);
+		audioSource = GetComponent<AudioSource> ();
+
     }
 	
 	// Update is called once per frame
@@ -21,15 +27,26 @@ public class BuffScript : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter2D(Collision2D squid)
+    void OnTriggerEnter2D(Collider2D squid)
     {
+
+		audioSource.PlayOneShot (squawk);
+
         target = squid.transform.gameObject;
-        PlayerMovement moveScript = target.GetComponent<PlayerMovement>();
-        if (buffID == 0)
-        {
-            moveScript.moveSpeed *= speedMultiplier;
-            StartCoroutine(SpeedBuff(moveScript));
-        }
+
+		if (target.tag == "Player1" || target.tag == "Player2") 
+		{
+			PlayerMovement moveScript = target.GetComponent<PlayerMovement> ();
+			if (buffID == 0) 
+			{
+				moveScript.moveSpeed *= speedMultiplier;
+				StartCoroutine (SpeedBuff (moveScript));
+			}
+
+			StartCoroutine (PlayAudio ());
+
+		}
+
     }
 
 
@@ -38,4 +55,14 @@ public class BuffScript : MonoBehaviour {
         yield return new WaitForSeconds(buffTime);
         move.moveSpeed /= speedMultiplier;
     }
+
+	IEnumerator PlayAudio ()
+	{
+		GetComponent <BoxCollider2D> ().enabled = false;
+		GetComponent <SpriteRenderer> ().enabled = false;
+
+		yield return new WaitForSeconds(squawk.length);
+		Destroy (gameObject);
+	}
+
 }

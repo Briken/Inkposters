@@ -104,14 +104,13 @@ public class PlayerMovement : MonoBehaviour
         Destroy (stunObject);
         stunObject = null;
 
-        print (stunObject);
-
     }
 
     void OnCollisionEnter2D (Collision2D other)
     {
 
-        audioSource.PlayOneShot (splat);
+		if (!audioSource.isPlaying)
+       		audioSource.PlayOneShot (splat);
 
     }
 

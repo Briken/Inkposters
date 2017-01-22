@@ -21,6 +21,10 @@ public class Pelicant : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+		transform.position = new Vector3 (24.69f, 4.81f, 0.0f);
+
+		print (transform.position);
+
         startPoint = this.transform.position;
         journey1Length = Vector2.Distance(startPoint, target.transform.position);
         journey2Length = Vector2.Distance(target.transform.position, startPoint);
