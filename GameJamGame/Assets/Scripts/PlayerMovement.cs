@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     bool outOfWater;
 
+    public GameObject stunnedIcon;
+
+    GameObject stunObject;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -84,7 +88,17 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator Stun()
     {
+        if (stunObject == null)
+        {
+            stunObject = Instantiate(stunnedIcon, transform.position, Quaternion.identity) as GameObject;
+            stunObject.transform.parent = this.transform;
+        }
+
         yield return new WaitForSeconds(stunDur);
         stunned = false;
+        Destroy (stunObject);
+        stunObject = null;
+
+        print (stunObject);
     }
 }

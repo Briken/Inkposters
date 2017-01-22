@@ -11,8 +11,6 @@ public class PlayerHead : MonoBehaviour
     GameObject gameController;
     GameInfo infoScript;
 
-    float countdown = 5.0f;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -23,37 +21,18 @@ public class PlayerHead : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if (countdown < 5.0f)
-        {
-            countdown += Time.deltaTime;
-        }
-        else if (countdown > 5.0f)
-        {
-            infoScript.ResetLevels();
-        }
 
 	}
 
     void OnTriggerEnter2D (Collider2D other)
     {
 
-        if (other.gameObject.tag == enemy)
+        if (other.gameObject.tag == enemy && mask != null)
         {
 
             Lose ();
 
-            if (this.name == "Player1")
-            {
-                infoScript.player1Wins();
-            }
-
-            if (this.name == "Player2")
-            {
-                infoScript.player2Wins();
-            }
-
-            countdown = 0.0f;
-
+            infoScript.ResetLevels(this.name);
         }
 
     }
@@ -68,4 +47,5 @@ public class PlayerHead : MonoBehaviour
             mask.GetComponent<MaskSpin>().CreateMask ();
 
     }
+
 }
