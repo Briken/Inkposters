@@ -11,16 +11,29 @@ public class GameInfo : MonoBehaviour {
     int p1Wins;
     int p2Wins;
 
-    public Text greenScore;
-    public Text pinkScore;
+	public Image greenScore;
+	public Image pinkScore;
     public GameObject scoreScreen;
 
+	public Sprite[] greenSprites;
+	public Sprite[] pinkSprites;
+
     float countdown = 5.0f;
+
+	public GameObject greenWin;
+	public GameObject pinkWin;
+
+	bool endGame = false;
 
 	// Use this for initialization
 	void Start ()
     {
         DontDestroyOnLoad(this.gameObject);
+		greenWin = GameObject.FindGameObjectWithTag("GreenWin");
+		greenWin.SetActive (false);
+
+		pinkWin = GameObject.FindGameObjectWithTag("PinkWin");
+		pinkWin.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -32,8 +45,11 @@ public class GameInfo : MonoBehaviour {
             scoreScreen.SetActive (true);
         }
         if (countdown > 5.0f)
-        {
-            Restart ();
+		{
+			if (!endGame)
+            	Restart ();
+			else
+				EndGame ();
             countdown = 5.0f;
         }
         	
@@ -45,12 +61,24 @@ public class GameInfo : MonoBehaviour {
         if (countdown == 5.0f)
         {
             if (winner == "Player1")
-                p1Wins++;
-            else
                 p2Wins++;
+            else
+                p1Wins++;
 
-            greenScore.text = p1Wins.ToString();
-            pinkScore.text = p2Wins.ToString();
+			if (p1Wins == 5)
+			{
+				greenWin.SetActive (true);
+				endGame = true;
+			}
+
+			if (p2Wins == 5)
+			{
+				pinkWin.SetActive (true);
+				endGame = true;
+			}
+
+			greenScore.sprite = greenSprites[p1Wins];
+			pinkScore.sprite = pinkSprites[p2Wins];
 
             countdown = 0.0f;
         }
@@ -62,4 +90,20 @@ public class GameInfo : MonoBehaviour {
         roundCount++;
         SceneManager.LoadScene("TestScene");
     }
+
+	void EndGame ()
+	{
+		SceneManager.LoadScene("MainMenu");
+		Destroy (gameObject);
+	}
+
+	void OnLevelWasLoaded ()
+	{
+			greenWin = GameObject.FindGameObjectWithTag("GreenWin");
+			greenWin.SetActive (false);
+
+			pinkWin = GameObject.FindGameObjectWithTag("PinkWin");
+			pinkWin.SetActive (false);
+	}
+
 }
