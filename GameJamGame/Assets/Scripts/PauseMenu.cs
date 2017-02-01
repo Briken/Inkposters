@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetButtonDown ("player1A"))
+		if (Input.GetButtonDown ("Player1A"))
 		{
 			if (!paused)
 				Pause ();
@@ -58,11 +58,23 @@ public class PauseMenu : MonoBehaviour
 		
 		if (!settings)
 		{
-			resumeButton.SetActive = false;
-			settingsButton.SetActive = false;
-			quitButton.SetActive = false;
+			resumeButton.SetActive (false);
+			//settingsButton.SetActive (false);
+			quitButton.SetActive (false);
 
 			settings = true;
+
+			settingsMenu.SetActive (true);
+		}
+		else
+		{
+			resumeButton.SetActive (true);
+			//settingsButton.SetActive (true);
+			quitButton.SetActive (true);
+
+			settings = false;
+
+			settingsMenu.SetActive (false);
 		}
 
 	}
