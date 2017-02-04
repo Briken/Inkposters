@@ -15,7 +15,7 @@
  */
 function Button(el, opts) {
   var me = this;
-  opts = opts || {}
+  opts = opts || {};
 
   var log_cb = function(name) {
     return function () {
