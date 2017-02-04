@@ -46,12 +46,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\Extentions.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\Inspector.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\PlayMode.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\PostBuildProcess.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\SettingWindow.cs" />
+     <Compile Include="Assets\AirConsole\scripts\editor\WebListener.cs" />
+     <None Include="Assets\AirConsole\README.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -112,10 +118,15 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>C:/Users/Andrew/Documents/GitHub/Inkposters/GameJamGame/Assets/AirConsole/plugins/websocket-sharp.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{A1A7C43E-21EA-8491-026E-BF86E7CF3689}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{9F68CF24-52EC-681D-E67C-04045CC581A4}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

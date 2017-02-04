@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A1A7C43E-21EA-8491-026E-BF86E7CF3689}</ProjectGuid>
+    <ProjectGuid>{2F02C3BB-E90D-1544-877A-122DBECFB10E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <AssemblyName>Assembly-UnityScript</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -46,21 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\ExplosionFireAndDebris.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\ExplosionPhysicsForce.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\ExtinguishableParticleSystem.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\FireLight.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\ParticleSystemMultiplier.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\SmokeParticles.cs" />
-     <Compile Include="Assets\Standard Assets\ParticleSystems\Scripts\WaterHoseParticles.cs" />
-     <None Include="Assets\AirConsole\README.txt" />
+     <Compile Include="Assets\AirConsole 1\WebGLTemplates\AirConsole\TemplateData\CSSPlugin.js" />
+     <Compile Include="Assets\AirConsole 1\WebGLTemplates\AirConsole\TemplateData\UnityProgress.js" />
+     <Compile Include="Assets\AirConsole 1\WebGLTemplates\AirConsole\TemplateData\tweenjs-0.6.0.min.js" />
+     <Compile Include="Assets\AirConsole 1\WebGLTemplates\AirConsole\airconsole-unity-plugin.js" />
+     <None Include="Assets\AirConsole 1\AirConsole\README.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
-     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\AirConsole 1\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -80,8 +75,12 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/Andrew/Documents/GitHub/Inkposters/GameJamGame/Assets/AirConsole/plugins/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/Andrew/Documents/GitHub/Inkposters/GameJamGame/Assets/AirConsole 1/AirConsole/plugins/websocket-sharp.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{A1A7C43E-21EA-8491-026E-BF86E7CF3689}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
