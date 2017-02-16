@@ -29,7 +29,7 @@ public class PlayerControlsScreenAir : MonoBehaviour {
     {
         //player controllerid is passed in as from
 
-        players[from].GetComponent<PlayerMovement>().//<CALL movement function here, using some form of the Jtoken "data" as the propulsion>
+        //players[from].GetComponent<PlayerMovement>().//<CALL movement function here, using some form of the Jtoken "data" as the propulsion>
 
     }
 }

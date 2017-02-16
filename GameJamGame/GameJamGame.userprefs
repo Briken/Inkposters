@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AirConsole\examples\pong\ExamplePongLogic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AirConsole\examples\pong\controller.html">
     <Files>
-      <File FileName="Assets\AirConsole\examples\pong\ExamplePongLogic.cs" Line="76" Column="38" />
-      <File FileName="Assets\AirConsole\examples\pong\controller.html" Line="31" Column="5" />
+      <File FileName="Assets\AirConsole\scripts\AirConsole.cs" Line="16" Column="17" />
+      <File FileName="Assets\AirConsole\examples\pong\controller.html" Line="74" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

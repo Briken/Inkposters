@@ -13,50 +13,67 @@
     /**
      * Sets up the communication to the screen.
      */
-    function init() {
+    function init() 
+    {
       airconsole = new AirConsole({"orientation": "portrait"});
-      airconsole.onMessage = function(from, data) {
-        if (from == AirConsole.SCREEN && data.vibrate) {
+      airconsole.onMessage = function(from, data) 
+      {
+        if (from == AirConsole.SCREEN && data.vibrate) 
+        {
           navigator.vibrate(data.vibrate);
           console.log("Vibrating: " + data.vibrate);
         }
       }
-      airconsole.onActivePlayersChange = function(player_number) {
+      airconsole.onActivePlayersChange = function(player_number) 
+      {
         updateText(player_number);
       }
-      airconsole.onReady = function() {
+      airconsole.onReady = function() 
+      {
         updateText();
       }
+
     }
 
-	function updateText(player_number) {
+	function updateText(player_number) 
+	{
 	  var div = document.getElementById("player_id");
-      if (airconsole.getActivePlayerDeviceIds().length == 0) {
+      if (airconsole.getActivePlayerDeviceIds().length == 0) 
+      {
         div.innerHTML = "Waiting for more players.";
-      } else if (player_number == undefined) {
+      } 
+      else if (player_number == undefined) 
+      {
         div.innerHTML = "This is a 2 player game";
-      } else if (player_number == 0) {
+      } 
+      else if (player_number == 0) 
+      {
         div.innerHTML = "You are the player on the left";
-      } else if (player_number == 1) {
+      } 
+      else if (player_number == 1) 
+      {
         div.innerHTML = "You are the player on the right";
-      };
+      }
 	}
 
     /**
      * Tells the screen to move the paddle of this player.
      * @param amount
      */
-    function move(amount) {
+    function move(amount) 
+    {
       airconsole.message(AirConsole.SCREEN, {move: amount})
     }
 
     </script>
     <style type="text/css">
-        @font-face {
+        @font-face 
+        {
             font-family: 'Arial';
         }
 
-        html, body {
+        html, body 
+        {
             height: 100%;
             margin: 0px;
             font-family: 'PressStart2P', sans-serif;
@@ -65,7 +82,8 @@
             background-color: black;
         }
 
-        .button {
+        .button 
+        {
             display: inline-block;
             height: 45%;
             width: 98%;
@@ -73,7 +91,8 @@
             position: relative;
         }
 
-        .button_label {
+        .button_label 
+        {
             position: absolute;
             left: 0px;
             width: 100%;
@@ -81,7 +100,8 @@
             margin-top: -6px;
         }
 
-        #player_id {
+        #player_id 
+        {
             position: absolute;
             top: 50%;
             left: 0%;
@@ -93,7 +113,7 @@
 </head>
 <body onload="init()">
     <div style="height: 1%"></div>
-    <div class=button ontouchstart="move(5)" ontouchend="move(0)" onmousedown="move(5)" onmouseup="move(0)">
+    <div class=button ontouchstart="move(-5)" ontouchend="move(0)" onmousedown="move(-5)" onmouseup="move(0)">
         <div class="button_label">UP</div>
     </div>
     <div style="height: 8%"></div>
