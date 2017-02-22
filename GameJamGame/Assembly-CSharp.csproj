@@ -206,8 +206,6 @@
      <Compile Include="Assets\AirConsole\scripts\DebugLevel.cs" />
      <Compile Include="Assets\AirConsole\scripts\Settings.cs" />
      <Compile Include="Assets\AirConsole\scripts\WebsocketListener.cs" />
-     <Compile Include="Assets\PlayerControllerAir.cs" />
-     <Compile Include="Assets\PlayerControlsScreenAir.cs" />
      <Compile Include="Assets\Scripts\BombScript.cs" />
      <Compile Include="Assets\Scripts\BuffScript.cs" />
      <Compile Include="Assets\Scripts\Creator.cs" />
@@ -220,6 +218,7 @@
      <Compile Include="Assets\Scripts\PelicantSeek.cs" />
      <Compile Include="Assets\Scripts\PlayerHead.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\SquidController.cs" />
      <Compile Include="Assets\Scripts\TentacleMovement.cs" />
      <None Include="Assets\AirConsole\README.txt" />
      <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using NDream.AirConsole;
+using Newtonsoft.Json.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip splat;
+
+	int canRotate;
 
 	// Use this for initialization
 	void Start ()
@@ -66,21 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!stunned)
         {
-            if (Input.GetAxis(controls[0]) > 0)
-            {
-
-                //transform.position += new Vector3 (0.1f, 0.0f, 0.0f);
-                transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f);
-
-            }
-            else if (Input.GetAxis(controls[0]) < 0)
-            {
-
-                //transform.position -= new Vector3 (0.1f, 0.0f, 0.0f);
-                transform.localEulerAngles += new Vector3(0.0f, 0.0f, 4.0f);
-
-            }
-
+			transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f) * canRotate;
 
             float angle = (transform.eulerAngles.z + 90) * Mathf.Deg2Rad;
             if (!isSped)
@@ -141,4 +131,11 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(speedDur);
         isSped = false;
     }
+
+	public void Rotate (int rot)
+	{
+		canRotate = rot;
+
+	}
+
 }
