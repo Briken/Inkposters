@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float speedDur = 5;
     public float speedMultiplier = 2;
 
+    public float rotationSpeed = 4.0f;
+
     public bool isSped = false;
 
     public string[] controls = new string[2];
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!stunned)
         {
-			transform.localEulerAngles -= new Vector3(0.0f, 0.0f, 4.0f) * canRotate;
+			transform.localEulerAngles -= new Vector3(0.0f, 0.0f, rotationSpeed) * canRotate;
 
             float angle = (transform.eulerAngles.z + 90) * Mathf.Deg2Rad;
             if (!isSped)

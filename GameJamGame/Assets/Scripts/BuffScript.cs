@@ -49,6 +49,7 @@ public class BuffScript : MonoBehaviour {
                     foreach (GameObject t in GameObject.FindGameObjectsWithTag("P1Tentacle"))
                     {
                         transform.localScale += shrinkMod;
+                        StartCoroutine(ResetShrink(GameObject.FindGameObjectsWithTag("P1Tentacle")));
                     }
                 }
                 if (target.tag == "Player2")
@@ -56,13 +57,15 @@ public class BuffScript : MonoBehaviour {
                     foreach (GameObject t in GameObject.FindGameObjectsWithTag("P2Tentacle"))
                     {
                         transform.localScale += shrinkMod;
+                        StartCoroutine(ResetShrink(GameObject.FindGameObjectsWithTag("P2Tentacle")));
                     }
                 }
             }
 
             if (buffID == 2)
             {
-
+                squid.GetComponent<PlayerMovement>().rotationSpeed *= 2;
+                StartCoroutine(ResetRotate(squid.GetComponent<PlayerMovement>()));
             }
 
             if (buffID == 3)
@@ -75,8 +78,20 @@ public class BuffScript : MonoBehaviour {
 
     }
 
-    
-    
+    IEnumerator ResetShrink(GameObject[] segments)
+    {
+        yield return new WaitForSeconds(buffTime);
+        foreach (GameObject n in segments)
+        {
+            transform.localScale -= shrinkMod;
+        }
+    }
+
+    IEnumerator ResetRotate(PlayerMovement player)
+    {
+        yield return new WaitForSeconds(buffTime);
+        player.rotationSpeed /= 2;
+    }
 
 
     IEnumerator SpeedBuff(PlayerMovement move)
