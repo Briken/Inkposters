@@ -7,6 +7,7 @@ public class BuffScript : MonoBehaviour {
     int buffID = 0;
     public float buffTime = 4.0f;
     public float speedMultiplier = 2;
+    public Vector3 shrinkMod;
     GameObject target;
 
 	public AudioClip squawk;
@@ -15,8 +16,8 @@ public class BuffScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-		
-       //buffID = (int)Random.Range(0,3);
+        shrinkMod = new Vector3(-0.5f, -0.5f);
+       buffID = (int)Random.Range(0,1);
 		audioSource = GetComponent<AudioSource> ();
 
     }
@@ -41,12 +42,41 @@ public class BuffScript : MonoBehaviour {
 			{
                 moveScript.isSped = true;
 			}
+            if (buffID == 1)
+            {
+                if (target.tag == "Player1")
+                {
+                    foreach (GameObject t in GameObject.FindGameObjectsWithTag("P1Tentacle"))
+                    {
+                        transform.localScale += shrinkMod;
+                    }
+                }
+                if (target.tag == "Player2")
+                {
+                    foreach (GameObject t in GameObject.FindGameObjectsWithTag("P2Tentacle"))
+                    {
+                        transform.localScale += shrinkMod;
+                    }
+                }
+            }
 
+            if (buffID == 2)
+            {
+
+            }
+
+            if (buffID == 3)
+            {
+
+            }
 			StartCoroutine (PlayAudio ());
 
 		}
 
     }
+
+    
+    
 
 
     IEnumerator SpeedBuff(PlayerMovement move)
